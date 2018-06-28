@@ -1,0 +1,170 @@
+apiVersion: v1
+kind: Template
+metadata:
+  name: nodejs-istio-tracing-greeting-service
+  annotations:
+    description: This template creates a Build Configuration using an S2I builder.
+    tags: instant-app
+parameters:
+- name: SOURCE_REPOSITORY_URL
+  description: The source URL for the application
+  displayName: Source URL
+  required: true
+- name: SOURCE_REPOSITORY_REF
+  description: The branch name for the application
+  displayName: Source Branch
+  value: master
+  required: true
+- name: SOURCE_REPOSITORY_DIR
+  description: The location within the source repo of the application
+  displayName: Source Directory
+  value: .
+  required: true
+- name: GITHUB_WEBHOOK_SECRET
+  description: A secret string used to configure the GitHub webhook.
+  displayName: GitHub Webhook Secret
+  required: true
+  from: '[a-zA-Z0-9]{40}'
+  generate: expression
+objects:
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    name: nodejs-istio-tracing-greeting
+  spec: {}
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    name: nodejs-istio-tracing-greeting-runtime
+  spec:
+    tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: 'bucharestgold/centos7-s2i-nodejs:10.x'
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    name: nodejs-istio-tracing-greeting
+  spec:
+    output:
+      to:
+        kind: ImageStreamTag
+        name: nodejs-istio-tracing-greeting:latest
+    postCommit: {}
+    resources: {}
+    source:
+      git:
+        uri: ${SOURCE_REPOSITORY_URL}
+        ref: ${SOURCE_REPOSITORY_REF}
+      contextDir: ${SOURCE_REPOSITORY_DIR}
+      type: Git
+    strategy:
+      type: Source
+      sourceStrategy:
+        from:
+          kind: ImageStreamTag
+          name: nodejs-istio-tracing-greeting-runtime:latest
+        incremental: true
+    triggers:
+    - github:
+        secret: ${GITHUB_WEBHOOK_SECRET}
+      type: GitHub
+    - type: ConfigChange
+    - imageChange: {}
+      type: ImageChange
+  status:
+    lastVersion: 0
+- apiVersion: v1
+  kind: Service
+  spec:
+    ports:
+      - protocol: TCP
+        port: 8080
+        name: http
+        targetPort: 8080
+    type: ClusterIP
+    selector:
+      project: nodejs-istio-tracing-greeting
+      provider: nodeshift
+  metadata:
+    name: nodejs-istio-tracing-greeting
+    labels:
+      provider: nodeshift
+      expose: 'true'
+      project: nodejs-istio-tracing-greeting
+      version: 2.0.0
+- apiVersion: v1
+  kind: DeploymentConfig
+  metadata:
+    name: nodejs-istio-tracing-greeting
+    labels:
+      app: nodejs-istio-tracing-greeting
+      provider: nodeshift
+      project: nodejs-istio-tracing-greeting
+      version: 2.0.0
+  spec:
+    template:
+      spec:
+        containers:
+          - readinessProbe:
+              exec:
+                command:
+                - curl
+                - http://localhost:8080/api/health/readiness
+              initialDelaySeconds: 10
+            livenessProbe:
+              exec:
+                command:
+                - curl
+                - http://localhost:8080/api/health/liveness
+              initialDelaySeconds: 180
+            image: nodejs-istio-tracing-greeting
+            name: nodejs-istio-tracing-greeting
+            securityContext:
+              privileged: false
+            ports:
+              - containerPort: 8080
+                name: http
+                protocol: TCP
+      metadata:
+        annotations:
+          sidecar.istio.io/inject: "true"
+        labels:
+          app: nodejs-istio-tracing-greeting
+          project: nodejs-istio-tracing-greeting
+          provider: nodeshift
+          version: 2.0.0
+    replicas: 1
+    selector:
+      app: nodejs-istio-tracing-greeting
+      project: nodejs-istio-tracing-greeting
+      provider: nodeshift
+    triggers:
+      - type: ConfigChange
+      - type: ImageChange
+        imageChangeParams:
+          automatic: true
+          containerNames:
+            - nodejs-istio-tracing-greeting
+          from:
+            kind: ImageStreamTag
+            name: 'nodejs-istio-tracing-greeting:latest'
+- apiVersion: extensions/v1beta1
+  kind: Ingress
+  metadata:
+    name: nodejs-istio-tracing-greeting-gateway
+    annotations:
+      kubernetes.io/ingress.class: "istio"
+  spec:
+    rules:
+    - http:
+        paths:
+        - path: /.*
+          backend:
+            serviceName: nodejs-istio-tracing-greeting
+            servicePort: 8080
+        - path: /api/greeting
+          backend:
+            serviceName: nodejs-istio-tracing-greeting
+            servicePort: 8080
