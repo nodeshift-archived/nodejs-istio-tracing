@@ -150,21 +150,3 @@ objects:
           from:
             kind: ImageStreamTag
             name: 'nodejs-istio-tracing-greeting:latest'
-- apiVersion: extensions/v1beta1
-  kind: Ingress
-  metadata:
-    name: nodejs-istio-tracing-greeting-gateway
-    annotations:
-      kubernetes.io/ingress.class: "istio"
-  spec:
-    rules:
-    - http:
-        paths:
-        - path: /.*
-          backend:
-            serviceName: nodejs-istio-tracing-greeting
-            servicePort: 8080
-        - path: /api/greeting
-          backend:
-            serviceName: nodejs-istio-tracing-greeting
-            servicePort: 8080

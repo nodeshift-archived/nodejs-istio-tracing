@@ -59,12 +59,12 @@
       <h3>Instructions</h3>
       <h4>The traces can be viewed by navigating to the Jaeger UI URL that is produced by the following
         commands</h4>
-      <pre><code>echo https://$(oc get route/jaeger-query -n istio-system  -o 'jsonpath={.spec.host}')</code></pre>
+      <pre><code>echo https://$(oc get route/tracing -n istio-system  -o 'jsonpath={.spec.host}')</code></pre>
     </div>
 
     <div class="row">
       Once in the Jaeger UI, search for traces named
-      <pre>istio-ingress<code></code></pre>
+      <pre>istio-ingressgateway<code></code></pre>
     </div>
 
   </div>
@@ -80,7 +80,7 @@
     $(document).ready(function() {
 
       $("#invoke").click(function(e) {
-          $.getJSON("/api/greeting", function(res) {
+          $.getJSON(createURL("api/greeting"), function(res) {
             $("#greeting-result").prepend(JSON.stringify(res.content) + "\n");
           })
           .fail(function(jqxhr, textStatus, error) {
@@ -93,6 +93,13 @@
         $("#greeting-result").html("");
         e.preventDefault();
       });
+
+      function createURL(name) {
+        if (window.location.href.endsWith("/")) {
+          return name;
+        }
+        return "nodejs-istio-tracing/" + name;
+      }
     });
 
   </script>
