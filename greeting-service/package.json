@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bucharest-gold/nodejs-istio-tracing.git"
+    "url": "git://github.com/nodeshift-starters/nodejs-istio-tracing.git"
   },
   "files": [
     "package.json",
@@ -39,9 +39,9 @@
     "licenses"
   ],
   "bugs": {
-    "url": "https://github.com/bucharest-gold/nodejs-istio-tracing/issues"
+    "url": "https://github.com/nodeshift-starters/nodejs-istio-tracing/issues"
   },
-  "homepage": "https://github.com/bucharest-gold/nodejs-istion-tracing",
+  "homepage": "https://github.com/nodeshift-starters/nodejs-istion-tracing",
   "devDependencies": {
     "nodeshift": "~1.9.0",
     "nsp": "~2.6.2",
