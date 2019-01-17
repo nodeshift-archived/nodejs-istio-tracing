@@ -15,16 +15,6 @@
             </licenses>
         </dependency>
         <dependency>
-            <packageName>cors</packageName>
-            <version>2.8.4</version>
-            <licenses>
-                <license>
-                    <name>MIT License</name>
-                    <url>http://www.opensource.org/licenses/MIT</url>
-                </license>
-            </licenses>
-        </dependency>
-        <dependency>
             <packageName>express</packageName>
             <version>4.16.0</version>
             <licenses>
