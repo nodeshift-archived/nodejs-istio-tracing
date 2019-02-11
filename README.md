@@ -1,5 +1,7 @@
 # Istio Distributed Tracing Mission for Node.js
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/nodeshift-starters/nodejs-istio-tracing.svg)](https://greenkeeper.io/)
+
 ## Purpose
 
 Showcase Distributed Tracing in Istio with Jaeger in Node.js applications
