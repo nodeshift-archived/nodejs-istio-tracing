@@ -1,0 +1,10 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "cute-name-service/package.json",
+        "greeting-service/package.json"
+      ]
+    }
+  }
+}
