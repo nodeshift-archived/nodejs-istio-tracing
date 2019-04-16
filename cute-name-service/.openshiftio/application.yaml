@@ -93,7 +93,7 @@ objects:
       provider: nodeshift
       expose: 'true'
       project: nodejs-istio-tracing-cute-name
-      version: 2.2.0
+      version: 2.2.1
 - apiVersion: v1
   kind: DeploymentConfig
   metadata:
@@ -102,7 +102,7 @@ objects:
       app: nodejs-istio-tracing-cute-name
       provider: nodeshift
       project: nodejs-istio-tracing-cute-name
-      version: 2.2.0
+      version: 2.2.1
   spec:
     template:
       spec:
@@ -134,7 +134,7 @@ objects:
           app: nodejs-istio-tracing-cute-name
           project: nodejs-istio-tracing-cute-name
           provider: nodeshift
-          version: 2.2.0
+          version: 2.2.1
     replicas: 1
     selector:
       app: nodejs-istio-tracing-cute-name
