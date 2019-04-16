@@ -1,4 +1,4 @@
-# Istio Distributed Tracing Mission for Node.js
+# Istio Distributed Tracing Example for Node.js
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/nodeshift-starters/nodejs-istio-tracing.svg)](https://greenkeeper.io/)
 
@@ -34,7 +34,7 @@ oc new-project <whatever valid project name you want> # not required
 
 #### Launcher Flow Setup
 
-If the Booster is installed through the Launcher and the Continuous Delivery flow, no additional steps are necessary.
+If the example application is installed through the Launcher and the Continuous Delivery flow, no additional steps are necessary.
 
 Skip to the _Use Cases_ section.
 
@@ -73,6 +73,6 @@ Any steps issuing `oc` commands require the user to have run `oc login` first an
     ```
     echo http://$(oc get route istio-ingressgateway -o jsonpath='{.spec.host}{"\n"}' -n istio-system)/nodejs-istio-tracing
     ```
-3. The user will be presented with the web page of the Booster
+3. The user will be presented with the web page of the Example Application
 4. Click the "Invoke" button. You should see a "cute" hello message appear in the result box.
 5. Follow the instructions in the webpage to access the Jaeger UI to view the application traces.
