@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
 <licenseSummary>
     <project>nodejs-istio-tracing-cute-name</project>
-    <version>2.2.1</version>
+    <version>3.0.0</version>
     <license>Apache-2.0</license>
     <dependencies>
         <dependency>
