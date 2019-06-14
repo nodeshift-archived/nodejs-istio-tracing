@@ -7,7 +7,6 @@
     "test": "tape test/integration/*.js | tap-spec",
     "lint": "xo",
     "coverage": "istanbul cover tape test/*.js",
-    "dependencyCheck": "szero . --ci",
     "prepublish": "license-reporter report -s",
     "postinstall": "license-reporter report -s && license-reporter save -s --xml licenses.xml",
     "start": "node ."
@@ -41,7 +40,6 @@
     "nodeshift": "~3.0.0",
     "rhoaster": "^0.2.0",
     "supertest": "^4.0.0",
-    "szero": "^1.0.1",
     "tap-spec": "~5.0.0",
     "tape": "~4.10.0",
     "xo": "~0.24.0"
