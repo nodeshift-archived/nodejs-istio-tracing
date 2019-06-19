@@ -16,7 +16,7 @@
  *
  */
 'use strict';
-const request = require('request');
+const axios = require('axios');
 
 module.exports = (endpoint, headers) => {
   return new Promise((resolve, reject) => {
@@ -34,12 +34,13 @@ module.exports = (endpoint, headers) => {
       }
     };
 
-    request(options, (error, response, body) => {
-      if (response.statusCode !== 200) {
-        return reject();
-      }
-
-      return resolve(body);
-    });
+    axios(options)
+      .then(response => {
+        if (response.status !== 200) {
+          return reject();
+        }
+        resolve(response.data);
+      })
+      .catch(reject);
   });
 };
