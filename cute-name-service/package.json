@@ -37,21 +37,21 @@
   },
   "homepage": "https://github.com/nodeshift-starters/nodejs-istio-tracing",
   "devDependencies": {
-    "nodeshift": "~3.0.0",
+    "nodeshift": "~3.0.1",
     "rhoaster": "^0.2.0",
-    "supertest": "^4.0.0",
+    "supertest": "~4.0.2",
     "tap-spec": "~5.0.0",
-    "tape": "~4.10.0",
+    "tape": "~4.11.0",
     "xo": "~0.24.0"
   },
   "description": "",
   "keywords": [],
   "dependencies": {
-    "body-parser": "^1.18.2",
+    "body-parser": "~1.19.0",
     "cors": "~2.8.4",
-    "express": "4.17.1",
-    "kube-probe": "~0.3.1",
-    "license-reporter": "^1.2.0",
-    "project-name-generator": "~2.1.5"
+    "express": "~4.17.1",
+    "kube-probe": "~0.3.2",
+    "license-reporter": "~1.2.2",
+    "project-name-generator": "~2.1.7"
   }
 }
