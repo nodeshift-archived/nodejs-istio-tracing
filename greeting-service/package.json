@@ -40,7 +40,7 @@
   },
   "homepage": "https://github.com/nodeshift-starters/nodejs-istion-tracing",
   "devDependencies": {
-    "nodeshift": "~3.0.1",
+    "nodeshift": "~3.1.0",
     "nyc": "~14.1.1",
     "rhoaster": "^0.2.0",
     "supertest": "~4.0.2",
