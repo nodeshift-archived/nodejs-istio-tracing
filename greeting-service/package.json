@@ -4,10 +4,7 @@
   "author": "Red Hat, Inc.",
   "license": "Apache-2.0",
   "scripts": {
-    "test": "tape test/integration/*.js | tap-spec",
     "lint": "xo",
-    "coverage": "nyc npm test",
-    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "start": "node .",
     "prepublish": "license-reporter report -s",
     "postinstall": "license-reporter report -s && license-reporter save -s --xml licenses.xml"
@@ -41,11 +38,6 @@
   "homepage": "https://github.com/nodeshift-starters/nodejs-istion-tracing",
   "devDependencies": {
     "nodeshift": "~3.1.1",
-    "nyc": "~14.1.1",
-    "rhoaster": "^0.4.0",
-    "supertest": "~4.0.2",
-    "tap-spec": "~5.0.0",
-    "tape": "~4.11.0",
     "xo": "~0.24.0"
   },
   "keywords": [],
