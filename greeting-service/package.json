@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/nodeshift-starters/nodejs-istion-tracing",
   "devDependencies": {
-    "nodeshift": "~3.1.1",
+    "nodeshift": "~6.0.2",
     "xo": "~0.24.0"
   },
   "keywords": [],
