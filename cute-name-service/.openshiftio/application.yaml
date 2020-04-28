@@ -93,7 +93,7 @@ objects:
       provider: nodeshift
       expose: 'true'
       project: nodejs-istio-tracing-cute-name
-      version: 3.0.0
+      version: 3.0.1
       'app.openshift.io/runtime': 'nodejs'
 - apiVersion: v1
   kind: DeploymentConfig
@@ -103,7 +103,7 @@ objects:
       app: nodejs-istio-tracing-cute-name
       provider: nodeshift
       project: nodejs-istio-tracing-cute-name
-      version: 3.0.0
+      version: 3.0.1
       'app.openshift.io/runtime': 'nodejs'
   spec:
     template:
@@ -136,7 +136,7 @@ objects:
           app: nodejs-istio-tracing-cute-name
           project: nodejs-istio-tracing-cute-name
           provider: nodeshift
-          version: 3.0.0
+          version: 3.0.1
     replicas: 1
     selector:
       app: nodejs-istio-tracing-cute-name

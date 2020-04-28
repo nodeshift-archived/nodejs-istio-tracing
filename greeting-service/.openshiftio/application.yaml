@@ -93,7 +93,7 @@ objects:
       provider: nodeshift
       expose: 'true'
       project: nodejs-istio-tracing-greeting
-      version: 3.0.0
+      version: 3.0.1
       'app.openshift.io/runtime': 'nodejs'
 - apiVersion: v1
   kind: DeploymentConfig
@@ -103,7 +103,7 @@ objects:
       app: nodejs-istio-tracing-greeting
       provider: nodeshift
       project: nodejs-istio-tracing-greeting
-      version: 3.0.0
+      version: 3.0.1
       'app.openshift.io/runtime': 'nodejs'
   spec:
     template:
@@ -136,7 +136,7 @@ objects:
           app: nodejs-istio-tracing-greeting
           project: nodejs-istio-tracing-greeting
           provider: nodeshift
-          version: 3.0.0
+          version: 3.0.1
     replicas: 1
     selector:
       app: nodejs-istio-tracing-greeting
