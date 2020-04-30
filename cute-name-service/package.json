@@ -5,9 +5,10 @@
   "license": "Apache-2.0",
   "scripts": {
     "lint": "xo",
-    "prepublish": "license-reporter report -s",
+    "prepublish": "npm run snyk-protect && license-reporter report -s",
     "postinstall": "license-reporter report -s && license-reporter save -s --xml licenses.xml",
-    "start": "node ."
+    "start": "node .",
+    "snyk-protect": "snyk protect"
   },
   "main": "./bin/www",
   "xo": {
@@ -46,6 +47,8 @@
     "express": "~4.17.1",
     "kube-probe": "~0.3.2",
     "license-reporter": "~1.2.2",
-    "project-name-generator": "~2.1.7"
-  }
+    "project-name-generator": "~2.1.7",
+    "snyk": "^1.316.1"
+  },
+  "snyk": true
 }
