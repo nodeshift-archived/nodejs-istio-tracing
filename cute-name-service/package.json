@@ -35,7 +35,7 @@
   },
   "homepage": "https://github.com/nodeshift-starters/nodejs-istio-tracing",
   "devDependencies": {
-    "nodeshift": "~6.1.0",
+    "nodeshift": "~6.2.0",
     "xo": "~0.24.0"
   },
   "description": "",
